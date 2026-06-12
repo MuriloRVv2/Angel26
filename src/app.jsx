@@ -498,7 +498,7 @@ function Promise_() {
         <div className="promise">
           <h2 className="section-title">🤝 A Promessa Ninja-Vampira</h2>
           <blockquote>
-            "Eu, <strong>Murilo</strong>, juro pelo meu nindô — meu caminho ninja — nunca voltar atrás na minha palavra de te amar.
+            "Eu, <strong>Murilo</strong>, vou me tornar o maior hokage do seu coração, vou mostrar pra todos que duvidarem de mim, você vai ver! — porque eu não volto atrás na minha palavra de te amar.
             <br />
             Eu, <strong>Angelytta</strong>, juro te amar <em>para todo o sempre</em>, como só quem leu a saga inteira sabe jurar."
           </blockquote>
