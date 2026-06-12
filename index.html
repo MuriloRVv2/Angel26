@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angelytta & Murilo — Crepúsculo encontra Konoha</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --forks-dark: #0d1b2a;
+    --forks-mid: #1b3a4b;
+    --forks-fog: #7d9aaa;
+    --konoha-dark: #3d1f0a;
+    --konoha-orange: #f57c1f;
+    --konoha-yellow: #ffb347;
+    --paper: #f5ecd9;
+  }
+
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background: #0a0a12;
+    color: #eee;
+    overflow-x: hidden;
+  }
+
+  /* ============ HERO DIVIDIDO ============ */
+  .hero {
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .hero-half {
+    flex: 1 1 320px;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .forks {
+    background: linear-gradient(180deg, #0d1b2a 0%, #1b3a4b 55%, #2c4f5e 100%);
+  }
+  .forks::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 80%, rgba(125,154,170,0.25) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 30%, rgba(125,154,170,0.15) 0%, transparent 40%);
+    pointer-events: none;
+  }
+
+  .konoha {
+    background: linear-gradient(180deg, #5a2d0c 0%, #b3541e 55%, #f57c1f 130%);
+  }
+  .konoha::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 20%, rgba(255,200,100,0.30) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 90%, rgba(255,120,30,0.20) 0%, transparent 45%);
+    pointer-events: none;
+  }
+
+  .hero-half h2 {
+    font-size: 2rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin: 18px 0 8px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    z-index: 1;
+  }
+  .hero-half p.sub {
+    font-style: italic;
+    opacity: 0.85;
+    z-index: 1;
+    text-align: center;
+    max-width: 320px;
+  }
+  .hero-half .icon { z-index: 1; }
+
+  .hero-center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+    text-align: center;
+    background: rgba(10,10,18,0.82);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 20px;
+    padding: 30px 40px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 0 60px rgba(0,0,0,0.7);
+  }
+  .hero-center h1 {
+    font-size: 2.4rem;
+    letter-spacing: 2px;
+    background: linear-gradient(90deg, #aee3ff 0%, #ffffff 50%, #ffb347 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hero-center .amp { font-size: 1.4rem; color: #d4af37; }
+  .hero-center p {
+    margin-top: 10px;
+    font-style: italic;
+    color: #cfcfcf;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 700px) {
+    .hero-center { position: static; transform: none; margin: -40px auto 40px; width: 90%; }
+    .hero { flex-direction: column; }
+  }
+
+  /* ============ SEÇÕES ============ */
+  section {
+    padding: 80px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .section-title {
+    text-align: center;
+    font-size: 1.9rem;
+    margin-bottom: 12px;
+    letter-spacing: 2px;
+  }
+  .section-sub {
+    text-align: center;
+    font-style: italic;
+    color: #999;
+    margin-bottom: 45px;
+  }
+  .divider {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    padding: 10px 0;
+    color: #d4af37;
+    letter-spacing: 12px;
+  }
+
+  /* ============ CONTADOR ============ */
+  .counter-wrap {
+    background: linear-gradient(135deg, rgba(27,58,75,0.55), rgba(90,45,12,0.55));
+    border: 1px solid rgba(212,175,55,0.4);
+    border-radius: 20px;
+    padding: 45px 25px;
+    text-align: center;
+  }
+  .counter-wrap .moon { font-size: 2.2rem; }
+  .counter {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 28px 0 18px;
+  }
+  .counter .box {
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 14px;
+    padding: 18px 10px;
+    min-width: 92px;
+  }
+  .counter .num {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #ffb347;
+    font-variant-numeric: tabular-nums;
+  }
+  .counter .label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #aee3ff;
+    margin-top: 6px;
+  }
+  .counter-wrap .since {
+    font-style: italic;
+    color: #ccc;
+    font-size: 0.95rem;
+  }
+
+  /* ============ LINHA DO TEMPO ============ */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 8px; top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #7d9aaa, #d4af37, #f57c1f);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 38px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 20px 24px;
+  }
+  .tl-item::before {
+    content: "";
+    position: absolute;
+    left: -28px; top: 26px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #d4af37;
+    box-shadow: 0 0 12px #d4af37;
+  }
+  .tl-item h3 { color: #ffb347; margin-bottom: 6px; font-size: 1.15rem; }
+  .tl-item .saga { color: #aee3ff; font-style: italic; font-size: 0.85rem; display:block; margin-bottom: 8px;}
+  .tl-item p { color: #ccc; font-size: 0.95rem; line-height: 1.6; }
+
+  /* ============ CARTA ============ */
+  .letter {
+    background: var(--paper);
+    color: #2e2418;
+    border-radius: 6px;
+    padding: 50px 45px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 60px rgba(160,130,80,0.15);
+    font-size: 1.05rem;
+    line-height: 1.9;
+    position: relative;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .letter::after {
+    content: "᠀";
+    position: absolute;
+    bottom: 22px; right: 30px;
+    font-size: 2rem;
+    color: #b3411e;
+  }
+  .letter .dear { font-size: 1.3rem; margin-bottom: 18px; font-style: italic; }
+  .letter .sign { margin-top: 28px; text-align: right; font-style: italic; }
+  .letter .seal {
+    margin-top: 18px;
+    text-align: right;
+    font-size: 0.8rem;
+    color: #b3411e;
+    letter-spacing: 1px;
+  }
+  .uzumaki-seal {
+    display: inline-block;
+    width: 46px; height: 46px;
+    vertical-align: middle;
+  }
+
+  /* ============ QUIZ ============ */
+  .quiz-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 34px 30px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .quiz-q { margin-bottom: 26px; }
+  .quiz-q p { margin-bottom: 12px; color: #eee; font-weight: bold; }
+  .quiz-q button {
+    font-family: inherit;
+    font-size: 0.92rem;
+    margin: 4px 6px 4px 0;
+    padding: 10px 16px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(0,0,0,0.35);
+    color: #ddd;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .quiz-q button:hover { border-color: #d4af37; color: #fff; }
+  .quiz-q button.sel-c { background: #1b3a4b; border-color: #aee3ff; color: #aee3ff; }
+  .quiz-q button.sel-u { background: #b3541e; border-color: #ffb347; color: #fff; }
+  #quizResult {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 1.15rem;
+    color: #ffb347;
+    min-height: 30px;
+    font-style: italic;
+  }
+  .quiz-go {
+    display: block;
+    margin: 10px auto 0;
+    padding: 12px 34px;
+    font-family: inherit;
+    font-size: 1rem;
+    background: linear-gradient(90deg, #1b3a4b, #b3541e);
+    color: #fff;
+    border: 1px solid #d4af37;
+    border-radius: 30px;
+    cursor: pointer;
+    letter-spacing: 1px;
+  }
+  .quiz-go:hover { filter: brightness(1.2); }
+
+  /* ============ PLAYLIST ============ */
+  .playlist {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+  }
+  .track {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .track-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .track .track-info { flex: 1; }
+  .track .note { font-size: 1.5rem; }
+  .track .t-name { font-weight: bold; color: #fff; font-size: 0.98rem; }
+  .track .t-from { font-size: 0.8rem; color: #999; font-style: italic; }
+  .track.tw { border-left: 4px solid #7d9aaa; }
+  .track.nr { border-left: 4px solid #f57c1f; }
+  .play-btn {
+    flex: 0 0 auto;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,175,55,0.6);
+    background: rgba(0,0,0,0.45);
+    color: #ffb347;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 3px; /* centraliza visualmente o ▶ */
+  }
+  .play-btn:hover {
+    background: #d4af37;
+    color: #14141e;
+    box-shadow: 0 0 16px rgba(212,175,55,0.5);
+  }
+  .track.playing .play-btn {
+    background: #d4af37;
+    color: #14141e;
+    padding-left: 0;
+  }
+  .track .player {
+    display: none;
+    margin-top: 14px;
+  }
+  .track.playing .player { display: block; }
+  .track .player iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    border-radius: 10px;
+    display: block;
+  }
+  .playlist-note {
+    text-align: center;
+    color: #888;
+    font-size: 0.85rem;
+    font-style: italic;
+    margin-top: 24px;
+  }
+
+  /* ============ PROMESSA ============ */
+  .promise {
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(212,175,55,0.12) 0%, transparent 70%);
+    border-radius: 20px;
+    padding: 60px 25px;
+  }
+  .promise blockquote {
+    font-size: 1.25rem;
+    font-style: italic;
+    line-height: 2;
+    max-width: 620px;
+    margin: 0 auto 30px;
+    color: #eee;
+  }
+  .promise .names {
+    font-size: 1.5rem;
+    color: #d4af37;
+    letter-spacing: 3px;
+  }
+  .promise .date { color: #999; margin-top: 8px; font-style: italic; }
+
+  footer {
+    text-align: center;
+    padding: 35px 20px 45px;
+    color: #777;
+    font-size: 0.85rem;
+    font-style: italic;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<div class="hero">
+  <div class="hero-half forks">
+    <!-- Lua / floresta de Forks -->
+    <svg class="icon" width="110" height="110" viewBox="0 0 100 100">
+      <circle cx="50" cy="42" r="26" fill="#dfe9ef"/>
+      <circle cx="58" cy="36" r="26" fill="#1b3a4b"/>
+      <polygon points="14,95 24,68 34,95" fill="#13242f"/>
+      <polygon points="32,95 44,60 56,95" fill="#0e1c25"/>
+      <polygon points="56,95 68,66 80,95" fill="#13242f"/>
+    </svg>
+    <h2>Forks</h2>
+    <p class="sub">"E assim o leão se apaixonou pela ovelha..."</p>
+  </div>
+
+  <div class="hero-half konoha">
+    <!-- Símbolo da Folha -->
+    <svg class="icon" width="110" height="110" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="44" fill="none" stroke="#fff" stroke-width="4" opacity="0.9"/>
+      <path d="M50 18 C 30 30, 30 58, 48 70 C 44 56, 48 42, 62 34 C 54 44, 52 58, 60 68 C 74 56, 72 32, 50 18 Z" fill="#fff" opacity="0.95"/>
+      <path d="M50 70 L 50 82" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <h2>Konoha</h2>
+    <p class="sub">"Eu nunca volto atrás na minha palavra. Esse é o meu jeito ninja!"</p>
+  </div>
+
+  <div class="hero-center">
+    <h1>Angelytta <span class="amp">&</span> Murilo</h1>
+    <p>Onde o crepúsculo encontra a vontade do fogo 🔥🌙</p>
+  </div>
+</div>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ============ CONTADOR ============ -->
+<section>
+  <h2 class="section-title">⏳ Imprinting Ativado</h2>
+  <p class="section-sub">Como os lobos de La Push: quando aconteceu, foi pra sempre.</p>
+  <div class="counter-wrap">
+    <div class="moon">🌙🦊</div>
+    <div class="counter">
+      <div class="box"><div class="num" id="d">0</div><div class="label">Dias</div></div>
+      <div class="box"><div class="num" id="h">0</div><div class="label">Horas</div></div>
+      <div class="box"><div class="num" id="m">0</div><div class="label">Minutos</div></div>
+      <div class="box"><div class="num" id="s">0</div><div class="label">Segundos</div></div>
+    </div>
+    <p class="since">desde <strong>16 de agosto de 2024</strong> — o dia em que o imprinting aconteceu 💛</p>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ============ LINHA DO TEMPO ============ -->
+<section>
+  <h2 class="section-title">📖 A Nossa Saga</h2>
+  <p class="section-sub">Cada capítulo da história, cada arco do anime — tudo nosso.</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <h3>Crepúsculo — Arco da Apresentação</h3>
+      <span class="saga">16 de agosto de 2024</span>
+      <p>O dia em que tudo começou. Como Bella chegando em Forks, como Naruto entrando na Academia: nenhum de nós sabia que a vida estava prestes a mudar para sempre.</p>
+    </div>
+    <div class="tl-item">
+      <h3>Lua Nova — Exame Chunin</h3>
+      <span class="saga">Os primeiros desafios</span>
+      <p>Todo casal passa por provas. A gente passou pelas nossas de mãos dadas — e saiu mais forte, como quem sobrevive à Floresta da Morte.</p>
+    </div>
+    <div class="tl-item">
+      <h3>Eclipse — Arco do Resgate</h3>
+      <span class="saga">Crescendo juntos</span>
+      <p>Quando um vacila, o outro vai buscar. Sem deixar pra trás, sem desistir. É promessa de uma vida.</p>
+    </div>
+    <div class="tl-item">
+      <h3>Amanhecer — Arco Final (que nunca acaba)</h3>
+      <span class="saga">Hoje e sempre</span>
+      <p>Nosso "para todo o sempre" estilo Cullen, com a teimosia Uzumaki de nunca desistir. O melhor arco ainda está sendo escrito. ✍️</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ============ CARTA ============ -->
+<section>
+  <h2 class="section-title">💌 A Carta</h2>
+  <p class="section-sub">Escrita com o drama do Edward, selada com o selo Uzumaki.</p>
+  <div class="letter">
+    <p class="dear">Angelytta,</p>
+    <p>
+      Antes de você, minha vida era como Forks sem sol — uma espera nublada por algo que eu nem sabia nomear.
+      Você é o meu tipo bem particular de marca: não preciso de cem anos de existência para saber que nenhum século
+      teria sentido sem você nele.
+    </p>
+    <p>
+      E se o destino quiser nos testar, que venha. Porque eu carrego comigo a vontade do fogo:
+      <em>eu nunca volto atrás na minha palavra</em> — e a minha palavra é você.
+      Esse é o meu jeito ninja de amar.
+    </p>
+    <p class="sign">— Para todo o sempre, e mais um pouco.<br>Murilo 🦊</p>
+    <p class="seal">
+      <svg class="uzumaki-seal" viewBox="0 0 50 50">
+        <circle cx="25" cy="25" r="23" fill="none" stroke="#b3411e" stroke-width="3"/>
+        <path d="M25 25 m0 -14 a14 14 0 1 1 -14 14 a11 11 0 1 0 11 -11 a8 8 0 1 1 -8 8 a5 5 0 1 0 5 -5"
+              fill="none" stroke="#b3411e" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      &nbsp;selado pelo clã Uzumaki
+    </p>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ============ QUIZ ============ -->
+<section>
+  <h2 class="section-title">🧛🍜 Você é mais Cullen ou mais Uzumaki?</h2>
+  <p class="section-sub">Responde aí, sem trapacear com Genjutsu nem leitura de mentes.</p>
+  <div class="quiz-card">
+    <div class="quiz-q" data-q="1">
+      <p>1. Plano perfeito de sábado à noite:</p>
+      <button data-side="c">🌧️ Filme com chuva na janela e cobertor</button>
+      <button data-side="u">🍜 Rodízio de lámen estilo Ichiraku</button>
+    </div>
+    <div class="quiz-q" data-q="2">
+      <p>2. Superpoder dos sonhos:</p>
+      <button data-side="c">✨ Imortalidade e brilhar no sol</button>
+      <button data-side="u">🌀 Rasengan e clones das sombras</button>
+    </div>
+    <div class="quiz-q" data-q="3">
+      <p>3. Numa briga, você:</p>
+      <button data-side="c">🧊 Mantém a pose, elegante e letal</button>
+      <button data-side="u">🔥 Grita o nome do golpe antes de dar</button>
+    </div>
+    <div class="quiz-q" data-q="4">
+      <p>4. Declaração de amor ideal:</p>
+      <button data-side="c">🌙 "Você é a minha marca pessoal de heroína"</button>
+      <button data-side="u">🍥 "Eu nunca desisto de você, dattebayo!"</button>
+    </div>
+    <button class="quiz-go" id="quizGo">Revelar meu clã ⚡</button>
+    <div id="quizResult"></div>
+  </div>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ============ PLAYLIST ============ -->
+<section>
+  <h2 class="section-title">🎵 A Trilha Sonora da Gente</h2>
+  <p class="section-sub">Metade casamento dos Cullen, metade abertura de anime. Perfeita.</p>
+  <div class="playlist">
+    <div class="track tw" data-yt="rtOvBOTyX00">
+      <div class="track-head">
+        <span class="note">🌙</span>
+        <div class="track-info"><div class="t-name">A Thousand Years — Christina Perri</div><div class="t-from">Amanhecer, Parte 1</div></div>
+        <button class="play-btn" aria-label="Tocar A Thousand Years">▶</button>
+      </div>
+      <div class="player"></div>
+    </div>
+    <div class="track nr" data-yt="mKSRff5z_JY">
+      <div class="track-head">
+        <span class="note">🍥</span>
+        <div class="track-info"><div class="t-name">Blue Bird — Ikimono-gakari</div><div class="t-from">Naruto Shippuden, abertura 3</div></div>
+        <button class="play-btn" aria-label="Tocar Blue Bird">▶</button>
+      </div>
+      <div class="player"></div>
+    </div>
+    <div class="track tw" data-yt="RGVmhrfQqzg">
+      <div class="track-head">
+        <span class="note">🌙</span>
+        <div class="track-info"><div class="t-name">Flightless Bird, American Mouth — Iron & Wine</div><div class="t-from">Crepúsculo (a dança do baile!)</div></div>
+        <button class="play-btn" aria-label="Tocar Flightless Bird">▶</button>
+      </div>
+      <div class="player"></div>
+    </div>
+    <div class="track nr" data-yt="dlFA0Zq1k2A">
+      <div class="track-head">
+        <span class="note">🍥</span>
+        <div class="track-info"><div class="t-name">Silhouette — KANA-BOON</div><div class="t-from">Naruto Shippuden, abertura 16</div></div>
+        <button class="play-btn" aria-label="Tocar Silhouette">▶</button>
+      </div>
+      <div class="player"></div>
+    </div>
+    <div class="track tw" data-yt="-G2pzuG25qI">
+      <div class="track-head">
+        <span class="note">🌙</span>
+        <div class="track-info"><div class="t-name">Bella's Lullaby — Carter Burwell</div><div class="t-from">Crepúsculo (no piano do Edward)</div></div>
+        <button class="play-btn" aria-label="Tocar Bella's Lullaby">▶</button>
+      </div>
+      <div class="player"></div>
+    </div>
+    <div class="track nr" data-yt="_N5JJ18iv54">
+      <div class="track-head">
+        <span class="note">🍥</span>
+        <div class="track-info"><div class="t-name">Sign — FLOW</div><div class="t-from">Naruto Shippuden, abertura 6</div></div>
+        <button class="play-btn" aria-label="Tocar Sign">▶</button>
+      </div>
+      <div class="player"></div>
+    </div>
+  </div>
+  <p class="playlist-note">▶ Clica no play que a música toca aqui mesmo (via YouTube). Só uma toca por vez — pra gente não misturar piano do Edward com abertura de anime. 😄</p>
+</section>
+
+<div class="divider">✦ ✦ ✦</div>
+
+<!-- ============ PROMESSA ============ -->
+<section>
+  <div class="promise">
+    <h2 class="section-title">🤝 A Promessa Ninja-Vampira</h2>
+    <blockquote>
+      "Eu, <strong>Murilo</strong>, juro pelo meu nindô — meu caminho ninja — nunca voltar atrás na minha palavra de te amar.<br>
+      Eu, <strong>Angelytta</strong>, juro te amar <em>para todo o sempre</em>, como só quem leu a saga inteira sabe jurar."
+    </blockquote>
+    <div class="names">Angelytta ❤ Murilo</div>
+    <p class="date">16 de agosto de 2024 — ∞</p>
+  </div>
+</section>
+
+<footer>
+  Feito com chakra, veneno de vampiro e muito amor. 🦇🍃<br>
+  Forks–Konoha © para todo o sempre.
+</footer>
+
+<script>
+  // ===== CONTADOR =====
+  const start = new Date(2024, 7, 16, 0, 0, 0); // 16 de agosto de 2024
+  function tick() {
+    let diff = Math.max(0, Date.now() - start.getTime());
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor(diff % 86400000 / 3600000);
+    const m = Math.floor(diff % 3600000 / 60000);
+    const s = Math.floor(diff % 60000 / 1000);
+    document.getElementById('d').textContent = d;
+    document.getElementById('h').textContent = h;
+    document.getElementById('m').textContent = m;
+    document.getElementById('s').textContent = s;
+  }
+  tick();
+  setInterval(tick, 1000);
+
+  // ===== PLAYLIST (players do YouTube sob demanda) =====
+  document.querySelectorAll('.track').forEach(track => {
+    const btn = track.querySelector('.play-btn');
+    const player = track.querySelector('.player');
+    const ytId = track.dataset.yt;
+
+    btn.addEventListener('click', () => {
+      const isPlaying = track.classList.contains('playing');
+
+      // para qualquer outra música que esteja tocando
+      document.querySelectorAll('.track.playing').forEach(t => {
+        t.classList.remove('playing');
+        t.querySelector('.player').innerHTML = '';
+        t.querySelector('.play-btn').textContent = '▶';
+      });
+
+      if (!isPlaying) {
+        const iframe = document.createElement('iframe');
+        iframe.src = 'https://www.youtube.com/embed/' + ytId + '?autoplay=1';
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        player.appendChild(iframe);
+        track.classList.add('playing');
+        btn.textContent = '■';
+      }
+    });
+  });
+
+  // ===== QUIZ =====
+  document.querySelectorAll('.quiz-q').forEach(q => {
+    q.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        q.querySelectorAll('button').forEach(b => b.classList.remove('sel-c','sel-u'));
+        btn.classList.add(btn.dataset.side === 'c' ? 'sel-c' : 'sel-u');
+        q.dataset.answer = btn.dataset.side;
+      });
+    });
+  });
+  document.getElementById('quizGo').addEventListener('click', () => {
+    const qs = [...document.querySelectorAll('.quiz-q')];
+    const res = document.getElementById('quizResult');
+    if (qs.some(q => !q.dataset.answer)) {
+      res.textContent = 'Responde tudo primeiro, sem usar Genjutsu pra fugir! 👀';
+      return;
+    }
+    const c = qs.filter(q => q.dataset.answer === 'c').length;
+    const u = qs.length - c;
+    if (c > u) res.textContent = '🧛 Você é um(a) CULLEN! Elegância, drama e amor eterno. Bem-vindo(a) à família.';
+    else if (u > c) res.textContent = '🍥 Você é um(a) UZUMAKI! Coração gigante, teimosia infinita e lámen no sangue. Dattebayo!';
+    else res.textContent = '⚡ Empate perfeito: um(a) CULLEN-UZUMAKI! Brilha no sol E faz Rasengan. Igualzinho a nós dois. 💛';
+  });
+</script>
+
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0a461047d828dff',t:'MTc4MTIyMDM2OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
