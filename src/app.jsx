@@ -65,9 +65,9 @@ const TRACKS = [
   { id: "1YHHC4n7TFrD5vaAa4cmGO", side: "tw", note: "🌙", name: "A Thousand Years — Christina Perri", from: "Amanhecer, Parte 1" },
   { id: "2tsWKbVFxGMAAzYqRZMnZ3", side: "nr", note: "🍥", name: "Blue Bird — Ikimono-gakari", from: "Naruto Shippuden, abertura 3" },
   { id: "2iKKc3oKBoADgQwdZTQIaH", side: "tw", note: "🌙", name: "Flightless Bird, American Mouth — Iron & Wine", from: "Crepúsculo (a dança do baile!)" },
-  { id: "1GMD0Xzzawqz2GHZC8IhwL", side: "nr", note: "🍥", name: "Silhouette — KANA-BOON", from: "Naruto Shippuden, abertura 16" },
+  { id: "1f8rf1C31sTvrtlZFwLi0G", side: "nr", note: "👁️", name: "Madara Flexzone — MHRAP", from: "A gang do Madara não brinca em serviço" },
   { id: "5djt2IiLLsQMeBiLWJQlGB", side: "tw", note: "🌙", name: "Bella's Lullaby — Carter Burwell", from: "Crepúsculo (no piano do Edward)" },
-  { id: "51dDu0VnSAWql8QNjDQMqA", side: "nr", note: "🍥", name: "Sign — FLOW", from: "Naruto Shippuden, abertura 6" },
+  { id: "56cbXWJVXSwz91ssfsb1ih", side: "nr", note: "⚡", name: "Tipo Sasukezin — MHRAP", from: "No pique Uchiha, estilo vingador" },
 ];
 
 /* ================== hooks utilitários ================== */
@@ -433,60 +433,35 @@ function Quiz({ toast }) {
   );
 }
 
-function Playlist({ toast }) {
-  const [playing, setPlaying] = useState(null);
-
-  const togglePlay = (track) => {
-    if (playing === track.id) {
-      setPlaying(null);
-    } else {
-      setPlaying(track.id);
-      toast(`Tocando: ${track.name} ${track.note}`);
-    }
-  };
-
+function Playlist() {
   return (
     <section id="playlist">
       <Reveal>
         <h2 className="section-title">🎵 A Trilha Sonora da Gente</h2>
-        <p className="section-sub">Metade casamento dos Cullen, metade abertura de anime. Perfeita.</p>
+        <p className="section-sub">Metade casamento dos Cullen, metade gang do Madara. Perfeita.</p>
       </Reveal>
       <div className="playlist">
         {TRACKS.map((t) => (
-          <Reveal key={t.id} className={`track ${t.side} ${playing === t.id ? "playing" : ""}`}>
+          <Reveal key={t.id} className={`track ${t.side}`}>
             <div className="track-head">
               <span className="note">{t.note}</span>
               <div className="track-info">
-                <div className="t-name">
-                  {t.name}
-                  {playing === t.id && (
-                    <span className="eq" aria-hidden="true">
-                      <i></i>
-                      <i></i>
-                      <i></i>
-                    </span>
-                  )}
-                </div>
+                <div className="t-name">{t.name}</div>
                 <div className="t-from">{t.from}</div>
               </div>
-              <button className="play-btn" aria-label={playing === t.id ? `Parar ${t.name}` : `Tocar ${t.name}`} onClick={() => togglePlay(t)}>
-                {playing === t.id ? "■" : "▶"}
-              </button>
             </div>
-            {playing === t.id && (
-              <div className="player">
-                <iframe
-                  src={`https://open.spotify.com/embed/track/${t.id}?utm_source=generator&theme=0`}
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  title={t.name}
-                />
-              </div>
-            )}
+            <div className="player">
+              <iframe
+                src={`https://open.spotify.com/embed/track/${t.id}?utm_source=generator&theme=0`}
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                loading="lazy"
+                title={t.name}
+              />
+            </div>
           </Reveal>
         ))}
       </div>
-      <p className="playlist-note">▶ Clica no play que o player do Spotify abre aqui mesmo. Só um por vez — pra gente não misturar piano do Edward com abertura de anime. 😄 (Pra ouvir a faixa inteira, é só estar logado no Spotify no navegador.)</p>
+      <p className="playlist-note">🎧 Players direto do Spotify — é só dar play! (Pra ouvir a faixa inteira, é só estar logado no Spotify no navegador.)</p>
     </section>
   );
 }
@@ -498,9 +473,8 @@ function Promise_() {
         <div className="promise">
           <h2 className="section-title">🤝 A Promessa Ninja-Vampira</h2>
           <blockquote>
-            "Eu, <strong>Murilo</strong>, vou me tornar o maior hokage do seu coração, vou mostrar pra todos que duvidarem de mim, você vai ver! — porque eu não volto atrás na minha palavra de te amar.
+            "Eu, <strong>Murilo Rodrigues</strong>, vou me tornar o maior Hokage do seu coração, vou mostrar pra todos que duvidarem, você vai ver — porque eu nunca volto atrás na minha palavra de te amar.
             <br />
-            Eu, <strong>Angelytta</strong>, juro te amar <em>para todo o sempre</em>, como só quem leu a saga inteira sabe jurar."
           </blockquote>
           <div className="names">Angelytta ❤ Murilo</div>
           <p className="date">16 de agosto de 2024 — ∞</p>
@@ -593,7 +567,7 @@ function App() {
       <div className="divider">✦ ✦ ✦</div>
       <Quiz toast={toast} />
       <div className="divider">✦ ✦ ✦</div>
-      <Playlist toast={toast} />
+      <Playlist />
       <div className="divider">✦ ✦ ✦</div>
       <Promise_ />
       <footer>
