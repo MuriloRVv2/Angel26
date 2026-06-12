@@ -461,7 +461,6 @@ function Playlist() {
           </Reveal>
         ))}
       </div>
-      <p className="playlist-note">🎧 Players direto do Spotify — é só dar play! (Pra ouvir a faixa inteira, é só estar logado no Spotify no navegador.)</p>
     </section>
   );
 }
@@ -471,7 +470,7 @@ function Promise_() {
     <section id="promessa">
       <Reveal>
         <div className="promise">
-          <h2 className="section-title">🤝 A Promessa Ninja-Vampira</h2>
+          <h2 className="section-title">🤝 Angelytta e Murilo - O vale sem fim</h2>
           <blockquote>
             "Eu, <strong>Murilo Rodrigues</strong>, vou me tornar Hokage do seu coração, vou provar para todos que duvidarem, você vai ver — porque eu nunca volto atrás na minha palavra de te amar.
             <br />
