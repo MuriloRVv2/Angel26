@@ -20,7 +20,8 @@ Juntos desde **16 de agosto de 2024**. 💛
 ## ▶️ Como usar o site
 
 1. Abra o `index.html` em qualquer navegador. Pronto! 🎉
-2. Os players de música usam embeds do YouTube, então precisam de internet pra tocar.
+2. Os players de música usam embeds do Spotify, então precisam de internet pra tocar.
+   Sem login no Spotify toca uma prévia de 30s; logado no navegador, toca a faixa completa.
 
 ## 🛠️ Como editar o site
 
@@ -39,7 +40,7 @@ Juntos desde **16 de agosto de 2024**. 💛
 - Linha do tempo da saga do casal (livros de Crepúsculo × arcos de Naruto)
 - Carta de amor em envelope clicável com selo Uzumaki
 - Quiz "Você é mais Cullen ou mais Uzumaki?"
-- Playlist com player do YouTube embutido (uma música por vez + equalizador)
+- Playlist com player do Spotify embutido (um por vez + equalizador)
 - Promessa ninja-vampira
 - UX/UI: navbar com scrollspy, barra de progresso de leitura, toggle de tema
   Forks/Konoha, animações ao rolar, chuva de corações, toasts, botão voltar
