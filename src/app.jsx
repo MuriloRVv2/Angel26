@@ -470,10 +470,9 @@ function Promise_() {
     <section id="promessa">
       <Reveal>
         <div className="promise">
-          <h2 className="section-title">🤝 Angelytta e Murilo - O vale sem fim</h2>
+          <h2 className="section-title">🤝 Murilo e Angelytta - Um vale sem fim</h2>
           <blockquote>
-            "Eu, <strong>Murilo Rodrigues</strong>, vou me tornar Hokage do seu coração, vou provar para todos que duvidarem, você vai ver — porque eu nunca volto atrás na minha palavra de te amar.
-            <br />
+            "Eu, <strong>Murilo Rodrigues</strong>, vou me tornar um Hokage do seu coração, nunca duvide de mim — eu não volto atrás na minha palavra, porque esse é o meu jeito ninja.<br />
           </blockquote>
           <div className="names">Angelytta ❤ Murilo</div>
           <p className="date">16 de agosto de 2024 — ∞</p>
