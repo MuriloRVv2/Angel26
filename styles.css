@@ -562,9 +562,9 @@ section { padding: 80px 20px; max-width: 900px; margin: 0 auto; scroll-margin-to
 .track .player { margin-top: 14px; }
 .track .player iframe {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  height: 152px;
   border: 0;
-  border-radius: 10px;
+  border-radius: 12px;
   display: block;
 }
 .playlist-note {

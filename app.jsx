@@ -62,12 +62,12 @@ const QUIZ = [
 ];
 
 const TRACKS = [
-  { id: "rtOvBOTyX00", side: "tw", note: "🌙", name: "A Thousand Years — Christina Perri", from: "Amanhecer, Parte 1" },
-  { id: "mKSRff5z_JY", side: "nr", note: "🍥", name: "Blue Bird — Ikimono-gakari", from: "Naruto Shippuden, abertura 3" },
-  { id: "RGVmhrfQqzg", side: "tw", note: "🌙", name: "Flightless Bird, American Mouth — Iron & Wine", from: "Crepúsculo (a dança do baile!)" },
-  { id: "dlFA0Zq1k2A", side: "nr", note: "🍥", name: "Silhouette — KANA-BOON", from: "Naruto Shippuden, abertura 16" },
-  { id: "-G2pzuG25qI", side: "tw", note: "🌙", name: "Bella's Lullaby — Carter Burwell", from: "Crepúsculo (no piano do Edward)" },
-  { id: "_N5JJ18iv54", side: "nr", note: "🍥", name: "Sign — FLOW", from: "Naruto Shippuden, abertura 6" },
+  { id: "1YHHC4n7TFrD5vaAa4cmGO", side: "tw", note: "🌙", name: "A Thousand Years — Christina Perri", from: "Amanhecer, Parte 1" },
+  { id: "2tsWKbVFxGMAAzYqRZMnZ3", side: "nr", note: "🍥", name: "Blue Bird — Ikimono-gakari", from: "Naruto Shippuden, abertura 3" },
+  { id: "2iKKc3oKBoADgQwdZTQIaH", side: "tw", note: "🌙", name: "Flightless Bird, American Mouth — Iron & Wine", from: "Crepúsculo (a dança do baile!)" },
+  { id: "1GMD0Xzzawqz2GHZC8IhwL", side: "nr", note: "🍥", name: "Silhouette — KANA-BOON", from: "Naruto Shippuden, abertura 16" },
+  { id: "5djt2IiLLsQMeBiLWJQlGB", side: "tw", note: "🌙", name: "Bella's Lullaby — Carter Burwell", from: "Crepúsculo (no piano do Edward)" },
+  { id: "51dDu0VnSAWql8QNjDQMqA", side: "nr", note: "🍥", name: "Sign — FLOW", from: "Naruto Shippuden, abertura 6" },
 ];
 
 /* ================== hooks utilitários ================== */
@@ -476,9 +476,9 @@ function Playlist({ toast }) {
             {playing === t.id && (
               <div className="player">
                 <iframe
-                  src={`https://www.youtube.com/embed/${t.id}?autoplay=1`}
-                  allow="autoplay; encrypted-media; picture-in-picture"
-                  allowFullScreen
+                  src={`https://open.spotify.com/embed/track/${t.id}?utm_source=generator&theme=0`}
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
                   title={t.name}
                 />
               </div>
@@ -486,7 +486,7 @@ function Playlist({ toast }) {
           </Reveal>
         ))}
       </div>
-      <p className="playlist-note">▶ Clica no play que a música toca aqui mesmo (via YouTube). Só uma toca por vez — pra gente não misturar piano do Edward com abertura de anime. 😄</p>
+      <p className="playlist-note">▶ Clica no play que o player do Spotify abre aqui mesmo. Só um por vez — pra gente não misturar piano do Edward com abertura de anime. 😄 (Pra ouvir a faixa inteira, é só estar logado no Spotify no navegador.)</p>
     </section>
   );
 }
@@ -498,7 +498,7 @@ function Promise_() {
         <div className="promise">
           <h2 className="section-title">🤝 A Promessa Ninja-Vampira</h2>
           <blockquote>
-            "Eu, <strong>Murilo</strong>, Vou me tornar o maior namorado do mundo, vou provar pra você — porque eu nunca volto atrás na minha palavra de te amar. Tô certo!!!
+            "Eu, <strong>Murilo</strong>, vou me tornar o maior namorado, você vai ver — porque eu nunca volto atrás na minha palavra de te amar. Tô certo!!!
             <br />
           </blockquote>
           <div className="names">Angelytta ❤ Murilo</div>
